@@ -1,0 +1,66 @@
+[
+    {
+        "nrc":"10001",
+        "nombre":"Programación Concurrente",
+        "profesor":"Juan Pérez",
+        "horario":"Lunes 07:00 - 09:00",
+        "aula":"CC-201"
+    },
+    {
+        "nrc":"10002",
+        "nombre":"Ingeniería de Software",
+        "profesor":"María López",
+        "horario":"Martes 10:00 - 12:00",
+        "aula":"CC-202"
+    },
+    {
+        "nrc":"10003",
+        "nombre":"Bases de Datos",
+        "profesor":"Carlos Gómez",
+        "horario":"Miércoles 08:00 - 10:00",
+        "aula":"CC-105"
+    },
+    {
+        "nrc": "10004",
+        "nombre": "Redes de Computadoras",
+        "profesor": "Luis Hernández",
+        "horario": "Lunes 09:00 - 11:00",
+        "aula": "CC-301"
+    },
+    {
+        "nrc": "10005",
+        "nombre": "Sistemas Operativos",
+        "profesor": "Ana Martínez",
+        "horario": "Martes 08:00 - 10:00",
+        "aula": "CC-204"
+    },
+    {
+        "nrc": "10006",
+        "nombre": "Inteligencia Artificial",
+        "profesor": "Roberto García",
+        "horario": "Miércoles 10:00 - 12:00",
+        "aula": "CC-305"
+    },
+    {
+        "nrc": "10007",
+        "nombre": "Análisis y Diseño de Algoritmos",
+        "profesor": "Miguel Torres",
+        "horario": "Jueves 07:00 - 09:00",
+        "aula": "CC-210"
+    },
+    {
+        "nrc": "10008",
+        "nombre": "Compiladores",
+        "profesor": "Patricia Sánchez",
+        "horario": "Viernes 09:00 - 11:00",
+        "aula": "CC-315"
+    },
+    {
+        "nrc": "10009",
+        "nombre": "Seguridad Informática",
+        "profesor": "Fernando Díaz",
+        "horario": "Lunes 12:00 - 14:00",
+        "aula": "CC-402"
+    }
+
+]
