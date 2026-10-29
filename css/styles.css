@@ -1,0 +1,135 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, sans-serif;
+    background:#f4f7fb;
+}
+
+.navbar{
+    background:#003b71;
+    color:white;
+
+    padding:20px;
+
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+}
+
+.logo{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.encabezado{
+    padding:30px;
+}
+
+.encabezado h1{
+    color:#0f2f69;
+}
+
+.contenedor{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap:20px;
+
+    padding:20px;
+}
+
+.card{
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    box-shadow:
+    0 2px 8px rgba(0,0,0,.1);
+}
+
+.card-header{
+    margin-bottom:15px;
+}
+
+input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    margin-bottom:15px;
+}
+
+.materia{
+
+    border-bottom:
+    1px solid #eee;
+
+    padding:10px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.materia:hover{
+
+    background:#f0f7ff;
+}
+
+button{
+
+    background:#007bff;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 12px;
+
+    border-radius:5px;
+
+    cursor:pointer;
+}
+
+button:hover{
+
+    background:#0056b3;
+}
+
+.seleccionadas-card{
+
+    margin:20px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 2px 8px rgba(0,0,0,.1);
+}
+
+.detalle{
+
+    line-height:1.8;
+}
