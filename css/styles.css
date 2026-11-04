@@ -212,7 +212,7 @@ input[type="checkbox"] {
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
 th,
@@ -226,3 +226,51 @@ th {
     color: #101a3a;
     font-weight: 600;
 }
+
+/* Seleccionar */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 50px;
+}
+
+/* NRC */
+th:nth-child(2),
+td:nth-child(2) {
+    width: 80px;
+}
+
+/* Días */
+th:nth-child(3),
+td:nth-child(3) {
+    width: 70px;
+}
+
+/* Horario */
+th:nth-child(4),
+td:nth-child(4) {
+    width: 150px;
+}
+
+/* Aula */
+th:nth-child(5),
+td:nth-child(5) {
+    width: 120px;
+}
+
+/* Profesor */
+th:nth-child(6),
+td:nth-child(6) {
+    width: 300px;
+}
+
+/* Créditos */
+th:nth-child(7),
+td:nth-child(7) {
+    width: 70px;
+}
+
+td:nth-child(6) {
+    white-space: normal;
+    line-height: 1.4;
+}
+

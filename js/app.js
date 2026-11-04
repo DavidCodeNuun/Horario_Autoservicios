@@ -1,119 +1,26 @@
-const names = [
-    'Computación MUM',
-    'Computación Semestral',
-    'Comunicación',
-    'Teoría de la Arquitectura',
-    'Dibujo Arquitectónico',
-    'Matemáticas I',
-    'Física I',
-    'Historia del Arte',
-    'Programación Concurrente',
-    'Ingeniería de Software',
-    'Bases de Datos',
-    'Redes de Computadoras'
-];
-
-const areas = [
-    'Computación',
-    'Computación',
-    'Comunicación',
-    'Arquitectura',
-    'Arquitectura',
-    'Matemáticas',
-    'Física',
-    'Arquitectura',
-    'Computación',
-    'Computación',
-    'Computación',
-    'Computación'
-];
-
-const data = names.map((name, i) => ({
-    name,
-    area: areas[i],
-
-    code:
-        [
-            'MAT101',
-            'MAT102',
-            'MAT103',
-            'ARQ201',
-            'ARQ202',
-            'MAT201',
-            'FIS101',
-            'ARQ210'
-        ][i] || 'CC' + (201 + i),
-
-    sections: (
-        i === 0
-            ? [
-                [12345, [0, 2, 4], 8, 9, 'A-101', 'Mtro. López'],
-                [12346, [1, 3], 10, 12, 'C-203', 'Dra. García'],
-                [12347, [0, 2, 4], 12, 13, 'A-105', 'Mtro. Pérez']
-            ]
-            : i === 1
-                ? [
-                    [22311, [0, 2], 9, 11, 'B-201', 'Dra. Ramírez'],
-                    [22312, [1, 3], 14, 16, 'B-305', 'Mtro. Torres']
-                ]
-                : [
-                    [
-                        30000 + i,
-                        [i % 5],
-                        7 + (i % 7),
-                        8 + (i % 7),
-                        'CC-' + (201 + i),
-                        'Profesor por confirmar'
-                    ]
-                ]
-    ).map(
-        ([nrc, days, start, end, room, teacher]) => ({
-            nrc,
-            days,
-            start,
-            end,
-            room,
-            teacher,
-            credits: i === 1 ? 5 : 4
-        })
-    )
-}));
+let data = [];
 
 const $ = (id) => document.getElementById(id);
 
-const dayNames = [
-    'Lunes',
-    'Martes',
-    'Miércoles',
-    'Jueves',
-    'Viernes',
-    'Sábado',
-    'Domingo'
-];
-
 let chosen = new Set();
-
 let allowed = new Set();
 
 try {
     const saved = JSON.parse(
-        localStorage.getItem('buap-planner-v2')
+        localStorage.getItem("buap-planner-v2")
     );
 
     if (saved) {
-        chosen = new Set(saved.chosen);
-        allowed = new Set(saved.allowed);
+        chosen = new Set(saved.chosen || []);
+        allowed = new Set(saved.allowed || []);
     }
 } catch {
-    // Ignorar errores de lectura
+    console.warn("No fue posible recuperar los datos guardados.");
 }
-
-const time = (n) =>
-    String(n).padStart(2, '0') + ':00';
 
 function persist() {
     localStorage.setItem(
-        'buap-planner-v2',
+        "buap-planner-v2",
         JSON.stringify({
             chosen: [...chosen],
             allowed: [...allowed]
@@ -121,43 +28,96 @@ function persist() {
     );
 }
 
+async function cargarMaterias() {
+    try {
+        const respuesta = await fetch("./data/materias.json");
+        const materias = await respuesta.json();
+
+        const agrupadas = {};
+
+        materias.forEach(materia => {
+
+            const nombre = materia.nombre;
+
+            if (!agrupadas[nombre]) {
+                agrupadas[nombre] = {
+                    name: nombre,
+                    sections: []
+                };
+            }
+
+            agrupadas[nombre].sections.push({
+                nrc: materia.nrc,
+                profesor: materia.profesor,
+                horarios: materia.horarios,
+                aula: materia.aula,
+                creditos: materia.creditos
+            });
+        });
+
+        data = Object.values(agrupadas);
+
+        render();
+
+    } catch (error) {
+        console.error(
+            "Error al cargar materias:",
+            error
+        );
+
+        $("sections").innerHTML = `
+            <p>Error al cargar las materias.</p>
+        `;
+    }
+}
+
 function render() {
 
-    const q = $('search').value.toLocaleLowerCase();
+    const q =
+        $("search")
+            .value
+            .toLowerCase();
 
-    $('count').textContent =
-        data.length + ' materias';
+    $("count").textContent =
+        `${data.length} materias`;
 
-    $('selected').textContent =
-        chosen.size + ' materias seleccionadas';
+    $("selected").textContent =
+        `${chosen.size} materias seleccionadas`;
 
-    $('subjects').innerHTML = data
-        .map((m, i) =>
-            m.name.toLocaleLowerCase().includes(q)
-                ? `
-                    <label class="subject ${chosen.has(i) ? 'checked' : ''}">
-                        
-                        <input
-                            type="checkbox"
-                            data-subject="${i}"
-                            ${chosen.has(i) ? 'checked' : ''}
-                        >
+    $("subjects").innerHTML = data
+        .map((m, i) => {
 
-                        <span>
-                            <strong>${m.name}</strong>
-                        </span>
+            if (
+                !m.name
+                    .toLowerCase()
+                    .includes(q)
+            ) {
+                return "";
+            }
 
-                    </label>
-                `
-                : ''
-        )
-        .join('');
+            return `
+                <label class="subject ${chosen.has(i) ? "checked" : ""}">
+                    
+                    <input
+                        type="checkbox"
+                        data-subject="${i}"
+                        ${chosen.has(i) ? "checked" : ""}
+                    >
 
-    $('sections').innerHTML =
+                    <span>
+                        <strong>${m.name}</strong>
+                    </span>
+
+                </label>
+            `;
+        })
+        .join("");
+
+    $("sections").innerHTML =
         [...chosen]
             .map(i => {
 
-                const m = data[i];
+                const materia = data[i];
 
                 return `
                     <details open class="group">
@@ -165,11 +125,11 @@ function render() {
                         <summary>
 
                             <div>
-                                <strong>${m.name}</strong>
+                                <strong>${materia.name}</strong>
                             </div>
 
                             <span>
-                                ${m.sections.length}
+                                ${materia.sections.length}
                                 horarios disponibles
                             </span>
 
@@ -179,66 +139,78 @@ function render() {
 
                             <thead>
                                 <tr>
-                                    ${
-                                        [
-                                            'Seleccionar',
-                                            'NRC',
-                                            'Días',
-                                            'Horario',
-                                            'Aula',
-                                            'Profesor',
-                                            'Créditos'
-                                        ]
-                                        .map(v => `<th>${v}</th>`)
-                                        .join('')
-                                    }
+                                    <th>Seleccionar</th>
+                                    <th>NRC</th>
+                                    <th>Días</th>
+                                    <th>Horario</th>
+                                    <th>Aula</th>
+                                    <th>Profesor</th>
+                                    <th>Créditos</th>
                                 </tr>
                             </thead>
 
                             <tbody>
 
-                                ${
-                                    m.sections
-                                    .map(s => `
-                                        <tr>
+                                ${materia.sections
+                                    .map(section => {
 
-                                            <td>
-                                                <input
-                                                    aria-label="Seleccionar NRC ${s.nrc}"
-                                                    type="checkbox"
-                                                    data-section="${s.nrc}"
-                                                    ${allowed.has(s.nrc) ? 'checked' : ''}
-                                                >
-                                            </td>
+                                        const dias =
+                                            section.horarios
+                                                .map(h => h.dia)
+                                                .join("<br>");
 
-                                            <td>${s.nrc}</td>
+                                        const horarios =
+                                            section.horarios
+                                                .map(h =>
+                                                    `${h.inicio} - ${h.fin}`
+                                                )
+                                                .join("<br>");
 
-                                            <td>
-                                                ${
-                                                    s.days
-                                                        .map(d =>
-                                                            dayNames[d].slice(0, 3)
-                                                        )
-                                                        .join(', ')
-                                                }
-                                            </td>
+                                        const aulas =
+                                            section.horarios
+                                                .map(h => h.aula)
+                                                .join("<br>");
 
-                                            <td>
-                                                ${time(s.start)}
-                                                -
-                                                ${time(s.end)}
-                                            </td>
+                                        return `
+                                            <tr>
 
-                                            <td>${s.room}</td>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                        data-section="${section.nrc}"
+                                                        ${allowed.has(section.nrc) ? "checked" : ""}
+                                                    >
+                                                </td>
 
-                                            <td>${s.teacher}</td>
+                                                <td>
+                                                    ${section.nrc}
+                                                </td>
 
-                                            <td>${s.credits}</td>
+                                                <td>
+                                                    ${dias}
+                                                </td>
 
-                                        </tr>
-                                    `)
-                                    .join('')
-                                }
+                                                <td>
+                                                    ${horarios}
+                                                </td>
+
+                                                <td>
+                                                    ${aulas}
+                                                </td>
+                                                
+                                                <td>
+                                                    ${section.profesor}
+                                                </td>
+
+                                                <td>
+                                                    ${section.creditos}
+                                                </td>
+
+                                            </tr>
+                                        `;
+
+                                    })
+                                    .join("")}
 
                             </tbody>
 
@@ -246,8 +218,9 @@ function render() {
 
                     </details>
                 `;
+
             })
-            .join('')
+            .join("")
 
         ||
 
@@ -258,38 +231,39 @@ function render() {
         `;
 }
 
-$('subjects').onchange = (e) => {
+$("subjects").onchange = (e) => {
 
-    const i = Number(
-        e.target.dataset.subject
-    );
+    const index =
+        Number(
+            e.target.dataset.subject
+        );
 
     if (e.target.checked) {
-        chosen.add(i);
+        chosen.add(index);
     } else {
-        chosen.delete(i);
+        chosen.delete(index);
     }
 
     persist();
     render();
 };
 
-$('sections').onchange = (e) => {
+$("sections").onchange = (e) => {
 
-    const n = Number(
-        e.target.dataset.section
-    );
+    const nrc =
+        e.target.dataset.section;
+
+    if (!nrc) return;
 
     if (e.target.checked) {
-        allowed.add(n);
+        allowed.add(nrc);
     } else {
-        allowed.delete(n);
+        allowed.delete(nrc);
     }
 
     persist();
 };
 
-$('search').oninput = render;
+$("search").oninput = render;
 
-
-render();
+cargarMaterias();

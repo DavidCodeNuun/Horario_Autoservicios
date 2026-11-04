@@ -1,66 +1,264 @@
 [
-    {
-        "nrc":"10001",
-        "nombre":"Programación Concurrente",
-        "profesor":"Juan Pérez",
-        "horario":"Lunes 07:00 - 09:00",
-        "aula":"CC-201"
-    },
-    {
-        "nrc":"10002",
-        "nombre":"Ingeniería de Software",
-        "profesor":"María López",
-        "horario":"Martes 10:00 - 12:00",
-        "aula":"CC-202"
-    },
-    {
-        "nrc":"10003",
-        "nombre":"Bases de Datos",
-        "profesor":"Carlos Gómez",
-        "horario":"Miércoles 08:00 - 10:00",
-        "aula":"CC-105"
-    },
-    {
-        "nrc": "10004",
-        "nombre": "Redes de Computadoras",
-        "profesor": "Luis Hernández",
-        "horario": "Lunes 09:00 - 11:00",
-        "aula": "CC-301"
-    },
-    {
-        "nrc": "10005",
-        "nombre": "Sistemas Operativos",
-        "profesor": "Ana Martínez",
-        "horario": "Martes 08:00 - 10:00",
-        "aula": "CC-204"
-    },
-    {
-        "nrc": "10006",
-        "nombre": "Inteligencia Artificial",
-        "profesor": "Roberto García",
-        "horario": "Miércoles 10:00 - 12:00",
-        "aula": "CC-305"
-    },
-    {
-        "nrc": "10007",
-        "nombre": "Análisis y Diseño de Algoritmos",
-        "profesor": "Miguel Torres",
-        "horario": "Jueves 07:00 - 09:00",
-        "aula": "CC-210"
-    },
-    {
-        "nrc": "10008",
-        "nombre": "Compiladores",
-        "profesor": "Patricia Sánchez",
-        "horario": "Viernes 09:00 - 11:00",
-        "aula": "CC-315"
-    },
-    {
-        "nrc": "10009",
-        "nombre": "Seguridad Informática",
-        "profesor": "Fernando Díaz",
-        "horario": "Lunes 12:00 - 14:00",
-        "aula": "CC-402"
-    }
+  {
+    "nrc": "25085",
+    "nombre": "Ensamblador",
+    "profesor": "CONTRERAS - MONSALVO JOSE FERNANDO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "10:00", "fin": "10:59", "aula": "1CCO4/303" },
+      { "dia": "Martes", "inicio": "09:00", "fin": "10:59", "aula": "1CCO3/104" },
+      { "dia": "Jueves", "inicio": "09:00", "fin": "10:59", "aula": "1CCO3/104" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "25676",
+    "nombre": "Redes Inalambricas",
+    "profesor": "COLORADO - JIMENEZ GUILLERMO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "07:00", "fin": "07:59", "aula": "1CCO3/109" },
+      { "dia": "Miércoles", "inicio": "07:00", "fin": "08:59", "aula": "1CCO4/202" },
+      { "dia": "Viernes", "inicio": "07:00", "fin": "08:59", "aula": "1CCO3/109" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "25719",
+    "nombre": "Redes Inalambricas",
+    "profesor": "LOPEZ - MUÑOZ MAURO ALBERTO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "13:00", "fin": "13:59", "aula": "1CC04/301" },
+      { "dia": "Miércoles", "inicio": "13:00", "fin": "14:59", "aula": "1CC03/303" },
+      { "dia": "Viernes", "inicio": "13:00", "fin": "14:59", "aula": "1CC04/301" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "25745",
+    "nombre": "Redes Inalambricas",
+    "profesor": "MORALES - AGUILAR LUIS ENRIQUE",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "17:00", "fin": "17:59", "aula": "1CC01/002" },
+      { "dia": "Miércoles", "inicio": "17:00", "fin": "18:59", "aula": "1CC03/303" },
+      { "dia": "Viernes", "inicio": "17:00", "fin": "18:59", "aula": "1CC04/204" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24736",
+    "nombre": "Diseño Digital",
+    "profesor": "MEJIA - PALAFOX JUAN",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "08:00", "fin": "08:59", "aula": "1CC01/003" },
+      { "dia": "Martes", "inicio": "07:00", "fin": "08:59", "aula": "1CC01/003" },
+      { "dia": "Jueves", "inicio": "07:00", "fin": "08:59", "aula": "1CC03/309" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24770",
+    "nombre": "Diseño Digital",
+    "profesor": "RUBIN - LINARES GUSTAVO TRINIDAD",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "16:00", "fin": "16:59", "aula": "1CC01/002" },
+      { "dia": "Martes", "inicio": "15:00", "fin": "16:59", "aula": "1CC03/309" },
+      { "dia": "Jueves", "inicio": "15:00", "fin": "16:59", "aula": "1CC01/002" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24904",
+    "nombre": "Diseño Digital",
+    "profesor": "SANCHEZ - GALVEZ MARIA EUGENIA NARCIZA SULLY",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "13:00", "fin": "13:59", "aula": "1CC01/002" },
+      { "dia": "Miércoles", "inicio": "13:00", "fin": "14:59", "aula": "1CC01/002" },
+      { "dia": "Viernes", "inicio": "13:00", "fin": "14:59", "aula": "1CC03/309" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24749",
+    "nombre": "Teoría de Control",
+    "profesor": "SANCHEZ - GALVEZ MARIA EUGENIA NARCIZA SULLY",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "12:00", "fin": "12:59", "aula": "1CC03/310" },
+      { "dia": "Martes", "inicio": "11:00", "fin": "12:59", "aula": "1CC03/310" },
+      { "dia": "Jueves", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/002" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24739",
+    "nombre": "Teoría de Control",
+    "profesor": "MALDONADO - GARCIA ABRAHAM",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "15:00", "fin": "15:59", "aula": "1CC03/310" },
+      { "dia": "Miércoles", "inicio": "15:00", "fin": "16:59", "aula": "1CC03/310" },
+      { "dia": "Viernes", "inicio": "15:00", "fin": "16:59", "aula": "1CC01/001" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24723",
+    "nombre": "Teoría de Control",
+    "profesor": "CORTEZ - ERNEST",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "18:00", "fin": "18:59", "aula": "1CC03/310" },
+      { "dia": "Martes", "inicio": "17:00", "fin": "18:59", "aula": "1CC03/310" },
+      { "dia": "Jueves", "inicio": "17:00", "fin": "18:59", "aula": "1CC01/003" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24709",
+    "nombre": "Teoría de Control",
+    "profesor": "TRINIDAD - GARCIA GREGORIO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "09:00", "fin": "09:59", "aula": "1CC03/309" },
+      { "dia": "Miércoles", "inicio": "09:00", "fin": "10:59", "aula": "1CC01/003" },
+      { "dia": "Viernes", "inicio": "09:00", "fin": "10:59", "aula": "1CC03/310" }
+    ],
+    "creditos": 6
+  },
+  {
+    "nrc": "24659",
+    "nombre": "Teoría de Control",
+    "profesor": "RUBIN - LINARES GUSTAVO TRINIDAD",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "13:00", "fin": "13:59", "aula": "1CC04/203" },
+      { "dia": "Miércoles", "inicio": "13:00", "fin": "14:59", "aula": "1CC04/203" },
+      { "dia": "Viernes", "inicio": "13:00", "fin": "14:59", "aula": "1CC03/208" }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "25353",
+    "nombre": "Minería de Datos",
+    "profesor": "AGUILAR - RICO ADOLFO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "08:00", "fin": "08:59", "aula": "1CC01/004" },
+      { "dia": "Martes", "inicio": "07:00", "fin": "08:59", "aula": "1CC03/109"  },
+      { "dia": "Jueves", "inicio": "07:00", "fin": "08:59", "aula": "1CC03/109"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "25387",
+    "nombre": "Minería de Datos",
+    "profesor": "TOVAR - VIDAL MIREYA",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "10:00", "fin": "10:59", "aula": "1CC04/102"  },
+      { "dia": "Martes", "inicio": "09:00", "fin": "10:59", "aula": "1CC04/404"  },
+      { "dia": "Jueves", "inicio": "09:00", "fin": "10:59", "aula": "1CC04/404"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "25421",
+    "nombre": "Minería de Datos",
+    "profesor": "AYAQUICA - MARTINEZ IRENE OLAYA",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "18:00", "fin": "18:59", "aula": "1CC01/004"  },
+      { "dia": "Martes", "inicio": "17:00", "fin": "18:59", "aula": "1CC02/104"  },
+      { "dia": "Jueves", "inicio": "17:00", "fin": "18:59", "aula": "1CC02/104"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "25448",
+    "nombre": "Minería de Datos",
+    "profesor": "OLMOS - PINEDA IVAN",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "11:00", "fin": "11:59", "aula": "1CC04/104"  },
+      { "dia": "Miércoles", "inicio": "11:00", "fin": "12:59", "aula": "1CC03/109"  },
+      { "dia": "Viernes", "inicio": "11:00", "fin": "12:59", "aula": "1CC03/109"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "24575",
+    "nombre": "Desarrollo de Aplicaciones Web",
+    "profesor": "VERA - CERVANTES EUGENIA ERICA",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "07:00", "fin": "07:59", "aula": "1CC01/004"  },
+      { "dia": "Miércoles", "inicio": "07:00", "fin": "08:59", "aula": "1CC01/004"  },
+      { "dia": "Viernes", "inicio": "07:00", "fin": "08:59", "aula": "1CC01/004"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "24604",
+    "nombre": "Desarrollo de Aplicaciones Web",
+    "profesor": "BELLO - LOPEZ PEDRO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "17:00", "fin": "17:59", "aula": "1CC01/004"  },
+      { "dia": "Miércoles", "inicio": "17:00", "fin": "18:59", "aula": "1CC01/004"  },
+      { "dia": "Viernes", "inicio": "17:00", "fin": "18:59", "aula": "1CC01/004"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "24624",
+    "nombre": "Desarrollo de Aplicaciones Web",
+    "profesor": "ELVIRA - ENRIQUEZ ROBERTO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "16:00", "fin": "16:59", "aula": "1CC01/004"  },
+      { "dia": "Martes", "inicio": "15:00", "fin": "16:59", "aula": "1CC01/004"  },
+      { "dia": "Jueves", "inicio": "15:00", "fin": "16:59", "aula": "1CC01/004"  }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "21408",
+    "nombre": "Sistemas Operativos I",
+    "profesor": "CASTILLO - ZACATELCO HILDA",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "12:00", "fin": "12:59", "aula": "1CC01/004" },
+      { "dia": "Martes", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/004" },
+      { "dia": "Jueves", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/004" }
+    ],
+    "creditos": 6
+  },
+  {
+  "nrc": "21450",
+  "nombre": "Sistemas Operativos I",
+  "profesor": "VARGAS - LOMELI MIGUEL ANGEL",
+  "horarios": [
+    {"dia": "Lunes","inicio": "13:00", "fin": "13:59", "aula": "1CC01/003"},
+    {"dia": "Miércoles","inicio": "13:00","fin": "14:59","aula": "1CC01/003"},
+    {"dia": "Viernes","inicio": "13:00", "fin": "14:59","aula": "1CC03/109"}
+  ],
+  "creditos": 6
+},
+{
+  "nrc": "21577",
+  "nombre": "Sistemas Operativos I",
+  "profesor": "COLMENARES - GUILLEN LUIS ENRIQUE",
+  "horarios": [
+    {"dia": "Lunes","inicio": "09:00", "fin": "09:59","aula": "1CC05/203"},
+    {"dia": "Miércoles", "inicio": "09:00","fin": "10:59","aula": "1CC05/203"},
+    {"dia": "Viernes","inicio": "09:00", "fin": "10:59","aula": "1CC03/109" }
+  ],
+  "creditos": 6
+},
+{
+    "nrc": "21620",
+    "nombre": "Sistemas Operativos I",
+    "profesor": "LOPEZ - POBLANO GILBERTO",
+    "horarios": [
+        {"dia": "Lunes","inicio": "17:00","fin": "17:59","aula": "1CC04/404"},
+        {"dia": "Miércoles","inicio": "17:00","fin": "18:59","aula": "1CC01/004"},
+        {"dia": "Viernes","inicio": "17:00","fin": "18:59","aula": "1CC04/404"}
+    ],
+    "creditos": 6
+}
 
 ]
