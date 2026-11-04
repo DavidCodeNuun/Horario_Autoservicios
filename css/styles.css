@@ -178,10 +178,6 @@ input[type="checkbox"] {
     flex-shrink: 0;
 }
 
-.subtitle {
-    margin: -10px 0 16px 42px;
-}
-
 .group {
     margin-bottom: 20px;
     border: 1px solid #e9edf2;
