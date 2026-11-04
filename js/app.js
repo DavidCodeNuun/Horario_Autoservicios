@@ -145,10 +145,7 @@ function render() {
 
                         <span>
                             <strong>${m.name}</strong>
-                            <small>${m.code}</small>
                         </span>
-
-                        <em>${m.area}</em>
 
                     </label>
                 `
@@ -167,19 +164,13 @@ function render() {
 
                         <summary>
 
-                            ⌃ ☑
-
                             <div>
                                 <strong>${m.name}</strong>
-
-                                <small>
-                                    ${m.code} | ${m.area}
-                                </small>
                             </div>
 
                             <span>
                                 ${m.sections.length}
-                                horarios disponibles ›
+                                horarios disponibles
                             </span>
 
                         </summary>
