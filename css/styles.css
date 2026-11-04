@@ -209,4 +209,20 @@ input[type="checkbox"] {
     color: #245a81;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
 
+th,
+td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #edf0f3;
+}
+
+th {
+    color: #101a3a;
+    font-weight: 600;
+}
