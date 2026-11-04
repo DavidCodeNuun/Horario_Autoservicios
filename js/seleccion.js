@@ -1,9 +1,5 @@
 let seleccionadas =
-    JSON.parse(
-        localStorage.getItem(
-            "materiasSeleccionadas"
-        )
-    ) || [];
+    JSON.parse(localStorage.getItem("materiasSeleccionadas")) || [];
 
 // Agregar materia
 function agregarMateria(nrc) {

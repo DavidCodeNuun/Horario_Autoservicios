@@ -11,8 +11,6 @@
 
 <body>
 
-    <!-- ENCABEZADO -->
-
     <header class="navbar">
 
         <div class="logo-container">
@@ -21,9 +19,6 @@
                 alt="Logo BUAP"
                 title="Logo de la BUAP">
 
-            <div class="sep">
-                <p>│</p>
-            </div>
             <div class="logo-text">
                 <p>Benemérita Universidad Autónoma de Puebla</p>
             </div>
@@ -35,110 +30,29 @@
 
     </header>
 
-    <!-- CONTENIDO -->
-
     <main>
-
-        <!-- TITULO -->
-
-        <section class="encabezado">
-
-            <h1>Generador de Horarios</h1>
-
-            <p>
-                Selecciona tus materias y sus horarios para generar
-                todas las combinaciones posibles.
-            </p>
-
+        <div class="heading">
+            <h1>Generador de horarios</h1>
+            <p>Selecciona tus materias y sus horarios para generar todas las combinaciones posibles.</p>
+        </div>
+    
+        <section class="panels">
+            <article class="card">
+                <h2>📖　Despliegue de materia <b id="count"></b></h2>
+                <input id="search" placeholder="⌕　Buscar materia...">
+                <div id="subjects" class="scroll"></div>
+            </article>
+    
+            <article class="card">
+                <h2>◷　Despliegue de horarios <b id="selected"></b></h2>
+                <p class="subtitle">NRC + Info</p>
+                <div id="sections" class="scroll"></div>
+            </article>
         </section>
-
-        <!-- CONTENEDOR PRINCIPAL -->
-
-        <section class="paneles">
-
-            <!-- PANEL IZQUIERDO -->
-
-            <div class="card">
-
-                <div class="card-header">
-
-                    <h2>Despliegue de Materias</h2>
-
-                    <span id="contadorMaterias">
-                        0 materias
-                    </span>
-
-                </div>
-
-                <div class="buscador">
-
-                    <input
-                        type="text"
-                        id="busqueda"
-                        placeholder="Buscar materia..."
-                    >
-
-                </div>
-
-                <div id="listaMaterias">
-
-                    <!-- JS INSERTA LAS MATERIAS -->
-
-                </div>
-
-            </div>
-
-            <!-- PANEL DERECHO -->
-
-            <div class="card">
-
-                <div class="card-header">
-
-                    <h2>Información de la Materia</h2>
-
-                </div>
-
-                <div id="detalleMateria">
-
-                    <p>
-                        Selecciona una materia para visualizar
-                        los detalles.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- MATERIAS SELECCIONADAS -->
-
-        <section class="card seleccionadas">
-
-            <div class="card-header">
-
-                <h2>Materias Seleccionadas</h2>
-
-                <span id="contadorSeleccionadas">
-                    0 seleccionadas
-                </span>
-
-            </div>
-
-            <div id="listaSeleccionadas">
-
-                <!-- JS INSERTA MATERIAS -->
-
-            </div>
-
-        </section>
-
+    
     </main>
-
-    <script src="js/materias.js"></script>
-    <script src="js/seleccion.js"></script>
     <script src="js/app.js"></script>
-
+    
 </body>
 
 </html>
