@@ -61,30 +61,29 @@ main {
 
 /* PANEL DE FILTROS */
 
-.filters-card {
+.courses-filters {
     display: flex;
-    align-items: end;
-    gap: 24px;
+    align-items: flex-end;
+    gap: 16px;
 
-    background: white;
-    border: 1px solid #e6f0f6;
-    border-radius: 12px;
+    padding: 12px 0 16px 0;
+    margin-bottom: 12px;
 
-    padding: 18px 20px;
-    margin-bottom: 14px;
+    border-bottom: 1px solid #e6eef5;
 
-    box-shadow: 0 3px 16px #0d628810;
+    flex-wrap: wrap;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 
 .filter-group label {
+    font-size: 0.8rem;
     font-weight: 600;
-    color: #13243d;
+    color: #6b7684;
 }
 
 .time-range {
@@ -94,11 +93,11 @@ main {
 }
 
 .time-range input {
-    width: 130px;
+    width: 100px;
 }
 
 #filtroAula {
-    min-width: 180px;
+    min-width: 150px;
 }
 
 .filter-actions {
@@ -106,7 +105,8 @@ main {
 }
 
 .filter-actions button {
-    padding: 10px 18px;
+    height: 38px;
+    padding: 0 14px;
 
     border: 1px solid #0b6aa7;
     border-radius: 8px;

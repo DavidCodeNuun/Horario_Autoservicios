@@ -36,34 +36,6 @@
             <p>Selecciona tus materias y sus horarios para generar todas las combinaciones posibles.</p>
         </div>
     
-        <section class="filters-card">
-            <div class="filter-group">
-                <label>Rango de horas</label>
-    
-                <div class="time-range">
-                    <span>Desde</span>
-                    <input type="time" id="horaInicio">
-    
-                    <span>Hasta</span>
-                    <input type="time" id="horaFin">
-                </div>
-            </div>
-    
-            <div class="filter-group">
-                <label>Aulas (opcional)</label>
-    
-                <select id="filtroAula">
-                    <option value="">Todas</option>
-                </select>
-            </div>
-    
-            <div class="filter-actions">
-                <button id="clearFilters">
-                    Limpiar filtros
-                </button>
-            </div>
-        </section>
-    
         <section class="panels">
             <article class="card">
                 <h2>📖　Proyeccion de Materias <b id="count"></b></h2>
@@ -73,6 +45,37 @@
     
             <article class="card">
                 <h2>◷　Cursos <b id="selected"></b></h2>
+    
+                <!-- FILTROS -->
+                <section class="courses-filters">
+    
+                    <div class="filter-group">
+                        <label>Rango de horas</label>
+    
+                        <div class="time-range">
+                            <span>Desde</span>
+                            <input type="time" id="horaInicio">
+    
+                            <span>Hasta</span>
+                            <input type="time" id="horaFin">
+                        </div>
+                    </div>
+    
+                    <div class="filter-group">
+                        <label>Aulas (opcional)</label>
+    
+                        <select id="filtroAula">
+                            <option value="">Todas</option>
+                        </select>
+                    </div>
+    
+                    <div class="filter-actions">
+                        <button id="clearFilters">
+                            Limpiar filtros
+                        </button>
+                    </div>
+    
+                </section>
                 <div id="sections" class="scroll"></div>
             </article>
         </section>
