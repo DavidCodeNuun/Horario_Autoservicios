@@ -113,6 +113,32 @@ function cargarAulas() {
 
 }
 
+function actualizarHorasFin() {
+
+    const inicio = $("horaInicio").value;
+    const fin = $("horaFin");
+
+    const opciones = fin.querySelectorAll("option");
+
+    opciones.forEach(opcion => {
+
+        if (opcion.value === "") return;
+
+        opcion.hidden =
+            inicio && opcion.value < inicio;
+
+    });
+
+    if (
+        fin.value &&
+        inicio &&
+        fin.value < inicio
+    ) {
+        fin.value = "";
+        filtroHoraFin = "";
+    }
+}
+
 function render() {
 
     const q =
@@ -352,7 +378,7 @@ $("horaInicio").addEventListener(
 
         filtroHoraInicio =
             e.target.value;
-
+        actualizarHorasFin();
         render();
 
     }
@@ -394,6 +420,8 @@ $("clearFilters").addEventListener(
         $("horaFin").value = "";
         $("filtroAula").value = "";
 
+        actualizarHorasFin();
+        
         render();
 
     }
