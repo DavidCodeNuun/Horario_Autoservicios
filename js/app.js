@@ -5,6 +5,11 @@ const $ = (id) => document.getElementById(id);
 let chosen = new Set();
 let allowed = new Set();
 
+let filtroHoraInicio = "";
+let filtroHoraFin = "";
+let filtroAula = "";
+
+
 try {
     const saved = JSON.parse(
         localStorage.getItem("buap-planner-v2")
@@ -56,6 +61,8 @@ async function cargarMaterias() {
         });
 
         data = Object.values(agrupadas);
+        
+        cargarAulas();
 
         render();
 
@@ -69,6 +76,41 @@ async function cargarMaterias() {
             <p>Error al cargar las materias.</p>
         `;
     }
+}
+
+function cargarAulas() {
+
+    const aulas = new Set();
+
+    data.forEach(materia => {
+        materia.sections.forEach(section => {
+            section.horarios.forEach(horario => {
+                if (horario.aula) {
+                    aulas.add(horario.aula);
+                }
+            });
+        });
+    });
+
+    const select = $("filtroAula");
+
+    select.innerHTML =
+        '<option value="">Todas</option>';
+
+    [...aulas]
+        .sort()
+        .forEach(aula => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = aula;
+            option.textContent = aula;
+
+            select.appendChild(option);
+
+        });
+
 }
 
 function render() {
@@ -152,26 +194,63 @@ function render() {
                             <tbody>
 
                                 ${materia.sections
-                                    .map(section => {
+                        .filter(section => {
 
-                                        const dias =
-                                            section.horarios
-                                                .map(h => h.dia)
-                                                .join("<br>");
+                            const cumpleHora =
+                                section.horarios.some(h => {
 
-                                        const horarios =
-                                            section.horarios
-                                                .map(h =>
-                                                    `${h.inicio} - ${h.fin}`
-                                                )
-                                                .join("<br>");
+                                    const inicio =
+                                        h.inicio;
 
-                                        const aulas =
-                                            section.horarios
-                                                .map(h => h.aula)
-                                                .join("<br>");
+                                    if (
+                                        filtroHoraInicio &&
+                                        inicio < filtroHoraInicio
+                                    ) {
+                                        return false;
+                                    }
 
-                                        return `
+                                    if (
+                                        filtroHoraFin &&
+                                        inicio > filtroHoraFin
+                                    ) {
+                                        return false;
+                                    }
+
+                                    return true;
+                                });
+
+                            const cumpleAula =
+                                !filtroAula ||
+                                section.horarios.some(
+                                    h => h.aula === filtroAula
+                                );
+
+                            return (
+                                cumpleHora &&
+                                cumpleAula
+                            );
+
+                        })
+                        .map(section => {
+
+                            const dias =
+                                section.horarios
+                                    .map(h => h.dia)
+                                    .join("<br>");
+
+                            const horarios =
+                                section.horarios
+                                    .map(h =>
+                                        `${h.inicio} - ${h.fin}`
+                                    )
+                                    .join("<br>");
+
+                            const aulas =
+                                section.horarios
+                                    .map(h => h.aula)
+                                    .join("<br>");
+
+                            return `
                                             <tr>
 
                                                 <td>
@@ -209,8 +288,9 @@ function render() {
                                             </tr>
                                         `;
 
-                                    })
-                                    .join("")}
+                        })
+                        .join("")
+                    }
 
                             </tbody>
 
@@ -265,5 +345,58 @@ $("sections").onchange = (e) => {
 };
 
 $("search").oninput = render;
+
+$("horaInicio").addEventListener(
+    "change",
+    e => {
+
+        filtroHoraInicio =
+            e.target.value;
+
+        render();
+
+    }
+);
+
+$("horaFin").addEventListener(
+    "change",
+    e => {
+
+        filtroHoraFin =
+            e.target.value;
+
+        render();
+
+    }
+);
+
+$("filtroAula").addEventListener(
+    "change",
+    e => {
+
+        filtroAula =
+            e.target.value;
+
+        render();
+
+    }
+);
+
+$("clearFilters").addEventListener(
+    "click",
+    () => {
+
+        filtroHoraInicio = "";
+        filtroHoraFin = "";
+        filtroAula = "";
+
+        $("horaInicio").value = "";
+        $("horaFin").value = "";
+        $("filtroAula").value = "";
+
+        render();
+
+    }
+);
 
 cargarMaterias();
