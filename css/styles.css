@@ -66,10 +66,10 @@ main {
     align-items: flex-end;
     gap: 16px;
 
-    padding: 12px 0 16px 0;
-    margin-bottom: 12px;
+    padding:12px 0;
+    margin-bottom:12px;
 
-    border-bottom: 1px solid #e6eef5;
+    border-bottom:1px solid #e5eef5;
 
     flex-wrap: wrap;
 }
@@ -81,23 +81,25 @@ main {
 }
 
 .filter-group label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #6b7684;
+    font-size:12px;
+    font-weight:600;
+    color:#6b7684;
 }
 
-.time-range {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+.filter-group select{
+    width:110px;
+    height:36px;
 
-.time-range input {
-    width: 100px;
+    border:1px solid #d8e2ea;
+    border-radius:8px;
+
+    padding:0 10px;
+
+    background:white;
 }
 
 #filtroAula {
-    min-width: 150px;
+    width: 150px;
 }
 
 .filter-actions {
