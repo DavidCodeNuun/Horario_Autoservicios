@@ -259,6 +259,30 @@
         {"dia": "Viernes","inicio": "17:00","fin": "18:59","aula": "1CC04/404"}
     ],
     "creditos": 6
-}
+},
+
+  {
+    "nrc": "21721",
+    "nombre": "Sistemas Operativos II",
+    "profesor": "AGUILAR - RICO ADOLFO",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "12:00", "fin": "12:59", "aula": "1CC01/004" },
+      { "dia": "Martes", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/004" },
+      { "dia": "Jueves", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/004" }
+    ],
+    "creditos": 6
+  },
+
+  {
+    "nrc": "21920",
+    "nombre": "Sistemas Operativos II",
+    "profesor": "ORATO - RAMIREZ JOSE MARTIN",
+    "horarios": [
+      { "dia": "Lunes", "inicio": "12:00", "fin": "12:59", "aula": "1CC01/004" },
+      { "dia": "Martes", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/004" },
+      { "dia": "Jueves", "inicio": "11:00", "fin": "12:59", "aula": "1CC01/004" }
+    ],
+    "creditos": 6
+  }
 
 ]
