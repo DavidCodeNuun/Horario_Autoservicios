@@ -65,6 +65,7 @@ async function cargarMaterias() {
         cargarAulas();
 
         render();
+        renderSchedule();
 
     } catch (error) {
         console.error(
@@ -137,6 +138,46 @@ function actualizarHorasFin() {
         fin.value = "";
         filtroHoraFin = "";
     }
+}
+
+function existeConflicto(nrcNuevo) {
+
+    const nuevaSeccion = data
+        .flatMap(m => m.sections)
+        .find(s => s.nrc === nrcNuevo);
+
+    if (!nuevaSeccion) return false;
+
+    const seccionesSeleccionadas = data
+        .flatMap(m => m.sections)
+        .filter(s => allowed.has(s.nrc));
+
+    for (const existente of seccionesSeleccionadas) {
+
+        for (const h1 of nuevaSeccion.horarios) {
+
+            for (const h2 of existente.horarios) {
+
+                if (h1.dia !== h2.dia) continue;
+
+                const inicio1 = h1.inicio;
+                const fin1 = h1.fin;
+
+                const inicio2 = h2.inicio;
+                const fin2 = h2.fin;
+
+                const traslape =
+                    inicio1 <= fin2 &&
+                    fin1 >= inicio2;
+
+                if (traslape) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
 function render() {
@@ -362,12 +403,30 @@ $("sections").onchange = (e) => {
     if (!nrc) return;
 
     if (e.target.checked) {
+
+        if (existeConflicto(nrc)) {
+
+            alert(
+                "\n⚠️ CONFLICTO DE HORARIO\n\nEl curso que intentas seleccionar coincide con el horario de otro curso ya agregado."
+            );
+
+            e.target.checked = false;
+
+            return;
+        }
+
         allowed.add(nrc);
+
     } else {
+
         allowed.delete(nrc);
+
     }
 
     persist();
+
+    renderSchedule();
+
 };
 
 $("search").oninput = render;
@@ -426,5 +485,124 @@ $("clearFilters").addEventListener(
 
     }
 );
+
+function renderSchedule() {
+
+    const dias = [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sabado"
+    ];
+
+    const horas = [];
+
+    for (let h = 7; h <= 21; h++) {
+
+        horas.push(
+            `${String(h).padStart(2, "0")}:00`
+        );
+
+    }
+
+    let html = `
+        <table class="schedule-table">
+
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    ${dias.map(
+        d => `<th>${d}</th>`
+    ).join("")}
+                </tr>
+            </thead>
+
+            <tbody>
+    `;
+
+    horas.forEach(hora => {
+
+        html += `<tr>`;
+
+        html += `
+            <td class="hour-cell">
+                ${hora}
+            </td>
+        `;
+
+        dias.forEach(dia => {
+
+            let contenido = "";
+
+            data.forEach(materia => {
+
+                materia.sections.forEach(section => {
+
+                    if (!allowed.has(section.nrc))
+                        return;
+
+                    section.horarios.forEach(h => {
+
+                        const ocupaHora =
+                            hora >= h.inicio &&
+                            hora <= h.fin;
+
+                        if (
+                             h.dia.trim() === dia.trim() &&
+                            ocupaHora
+                        ) {
+
+                            contenido += `
+                                <div class="schedule-course">
+
+                                    <div class="course-name">
+                                        ${materia.name}
+                                    </div>
+
+                                    <div class="course-nrc">
+                                        ${section.nrc}
+                                    </div>
+
+                                    <div class="course-professor">
+                                        ${section.profesor}
+                                     </div>
+
+                                    <div class="course-room">
+                                        ${h.aula}
+                                    </div>
+
+                                 </div>
+                            `;
+
+                        }
+
+                    });
+
+                });
+
+            });
+
+            html += `
+                <td>
+                    ${contenido}
+                </td>
+            `;
+
+        });
+
+        html += `</tr>`;
+
+    });
+
+    html += `
+            </tbody>
+        </table>
+    `;
+
+    $("schedule").innerHTML = html;
+
+}
 
 cargarMaterias();

@@ -371,3 +371,29 @@ td:nth-child(6) {
     text-align: center;
 }
 
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #d6dde7;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.schedule-table th:first-child,
+.schedule-table td:first-child {
+    width: 60px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.schedule-table th:not(:first-child),
+.schedule-table td:not(:first-child) {
+    width: calc((100% - 70px) / 5);
+}
+
+.schedule-table tbody tr {
+    height: 90px;
+}
