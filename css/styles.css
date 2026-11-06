@@ -337,3 +337,37 @@ td:nth-child(6) {
     line-height: 1.4;
 }
 
+/* =========================
+   HORARIO SEMANAL
+========================= */
+
+.schedule-section {
+    margin-top: 14px;
+}
+
+.schedule-card {
+    width: 100%;
+}
+
+.schedule-section,
+.schedule-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#schedule {
+    width: 100%;
+    overflow-x: auto;
+    min-height: 180px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule-placeholder {
+    color: #6b7684;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
