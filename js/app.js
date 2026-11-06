@@ -554,8 +554,22 @@ function renderSchedule() {
                             ocupaHora
                         ) {
 
+                            const colores = [
+                                "course-blue",
+                                "course-green",
+                                "course-yellow",
+                                "course-pink",
+                                "course-purple",
+                                "course-cyan"
+                            ];
+
+                            const color =
+                                colores[
+                                    parseInt(section.nrc) % colores.length
+                                ];
+
                             contenido += `
-                                <div class="schedule-course">
+                                <div class="schedule-course ${color}">
 
                                     <div class="course-name">
                                         ${materia.name}
@@ -570,7 +584,7 @@ function renderSchedule() {
                                      </div>
 
                                     <div class="course-room">
-                                        ${h.aula}
+                                        » ${h.aula}
                                     </div>
 
                                  </div>
