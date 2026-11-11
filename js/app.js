@@ -9,6 +9,23 @@ let filtroHoraInicio = "";
 let filtroHoraFin = "";
 let filtroAula = "";
 
+let currentCombination = 1;
+
+const combinaciones = [
+    {
+        materias: [],
+        cursos: []
+    },
+    {
+        materias: [],
+        cursos: []
+    },
+    {
+        materias: [],
+        cursos: []
+    }
+];
+
 
 try {
     const saved = JSON.parse(
@@ -66,6 +83,7 @@ async function cargarMaterias() {
 
         render();
         renderSchedule();
+        actualizarIndicadorCombinacion();
 
     } catch (error) {
         console.error(
@@ -618,5 +636,132 @@ function renderSchedule() {
     $("schedule").innerHTML = html;
 
 }
+
+function actualizarIndicadorCombinacion() {
+
+    const indicador =
+        $("combinationIndicator");
+
+    if (!indicador) return;
+
+    indicador.textContent =
+        `Combinación ${currentCombination} de 3`;
+
+}
+
+function obtenerCombinacionActual() {
+
+    return combinaciones[
+        currentCombination - 1
+    ];
+
+}
+
+function guardarCombinacionActual() {
+
+    const combinacion =
+        obtenerCombinacionActual();
+
+    combinacion.materias =
+        [...chosen];
+
+    combinacion.cursos =
+        [...allowed];
+
+}
+
+function cargarCombinacionActual() {
+
+    const combinacion =
+        obtenerCombinacionActual();
+
+    chosen =
+        new Set(combinacion.materias);
+
+    allowed =
+        new Set(combinacion.cursos);
+
+    render();
+
+    renderSchedule();
+
+}
+
+$("prevCombination")?.addEventListener(
+    "click",
+    () => {
+
+        if (currentCombination > 1) {
+
+            guardarCombinacionActual();
+
+            currentCombination--;
+
+            cargarCombinacionActual();
+
+            actualizarIndicadorCombinacion();
+
+        }
+
+    }
+);
+
+$("nextCombination")?.addEventListener(
+    "click",
+    () => {
+
+        if (currentCombination < 3) {
+
+            guardarCombinacionActual();
+
+            currentCombination++;
+
+            cargarCombinacionActual();
+
+            actualizarIndicadorCombinacion();
+
+        }
+
+    }
+);
+
+function generarHorario() {
+
+    if (chosen.size === 0) {
+
+        alert(
+            "Selecciona al menos una materia antes de generar un horario."
+        );
+
+        return;
+    }
+
+    if (!filtroHoraInicio) {
+
+        alert(
+            "Selecciona una hora de inicio."
+        );
+
+        return;
+    }
+
+    if (!filtroHoraFin) {
+
+        alert(
+            "Selecciona una hora de fin."
+        );
+
+        return;
+    }
+
+    alert(
+        `Generando horario para ${chosen.size} materias en el rango ${filtroHoraInicio} - ${filtroHoraFin}`
+    );
+}
+
+$("generateSchedule")?.addEventListener(
+    "click",
+    generarHorario
+);
 
 cargarMaterias();
