@@ -72,7 +72,6 @@ async function cargarMaterias() {
                 nrc: materia.nrc,
                 profesor: materia.profesor,
                 horarios: materia.horarios,
-                aula: materia.aula,
                 creditos: materia.creditos
             });
         });
@@ -196,6 +195,34 @@ function existeConflicto(nrcNuevo) {
     }
 
     return false;
+}
+
+function hayConflictoEntreCursos(
+    cursoA,
+    cursoB
+) {
+
+    for (const h1 of cursoA.horarios) {
+
+        for (const h2 of cursoB.horarios) {
+
+            if (h1.dia !== h2.dia)
+                continue;
+
+            const traslape =
+                h1.inicio <= h2.fin &&
+                h1.fin >= h2.inicio;
+
+            if (traslape) {
+                return true;
+            }
+
+        }
+
+    }
+
+    return false;
+
 }
 
 function render() {
@@ -725,6 +752,118 @@ $("nextCombination")?.addEventListener(
     }
 );
 
+function cursoDentroDelRango(section) {
+
+    return section.horarios.every(h => {
+
+        return (
+            h.inicio >= filtroHoraInicio &&
+            h.inicio <= filtroHoraFin
+        );
+
+    });
+
+}
+
+function obtenerCursosCompatibles() {
+
+    const materiasSeleccionadas =
+        Array.from(chosen)
+            .map(index => data[index]);
+
+    return materiasSeleccionadas.map(materia => ({
+
+        nombre: materia.name,
+
+        opciones: materia.sections.filter(
+            cursoDentroDelRango
+        )
+
+    }));
+
+}
+
+function generarCombinacionBacktracking() {
+
+    const materias =
+        obtenerCursosCompatibles();
+
+    let mejorResultado = [];
+
+    function resolver(
+        indiceMateria,
+        resultadoActual,
+        materiasIncluidas
+    ) {
+
+        if (
+            resultadoActual.length >
+            mejorResultado.length
+        ) {
+
+            mejorResultado =
+                [...resultadoActual];
+
+        }
+
+        if (
+            indiceMateria >= materias.length
+        ) {
+            return;
+        }
+
+        const materia =
+            materias[indiceMateria];
+
+        for (
+            const curso of materia.opciones
+        ) {
+
+            const tieneConflicto =
+                resultadoActual.some(
+                    seleccionado =>
+                        hayConflictoEntreCursos(
+                            seleccionado,
+                            curso
+                        )
+                );
+
+            if (tieneConflicto) {
+                continue;
+            }
+
+            resultadoActual.push(curso);
+
+            materiasIncluidas.push(
+                materia.nombre
+            );
+
+            resolver(
+                indiceMateria + 1,
+                resultadoActual,
+                materiasIncluidas
+            );
+
+            resultadoActual.pop();
+            materiasIncluidas.pop();
+        }
+
+        resolver(
+            indiceMateria + 1,
+            resultadoActual,
+            materiasIncluidas
+        );
+    }
+
+    resolver(
+        0,
+        [],
+        []
+    );
+
+    return mejorResultado;
+}
+
 function generarHorario() {
 
     if (chosen.size === 0) {
@@ -754,14 +893,74 @@ function generarHorario() {
         return;
     }
 
-    alert(
-        `Generando horario para ${chosen.size} materias en el rango ${filtroHoraInicio} - ${filtroHoraFin}`
+    const materias =
+        obtenerCursosCompatibles();
+
+    const combinacion =
+        generarCombinacionBacktracking();
+
+    if (
+        combinacion.length === 0
+    ) {
+
+        alert(
+            "No fue posible generar ninguna alternativa dentro del rango seleccionado."
+        );
+
+        return;
+    }
+
+    const totalMaterias = materias.length;
+
+    const materiasIncluidas = new Set(
+        combinacion.map(curso => {
+
+            const materia = materias.find(
+                m => m.opciones.some(
+                    op => op.nrc === curso.nrc
+                )
+            );
+
+            return materia?.nombre;
+        })
     );
+
+    const descartadas =
+        materias
+            .filter(
+                m => !materiasIncluidas.has(
+                    m.nombre
+                )
+            )
+            .map(
+                m => m.nombre
+            );
+
+    let mensaje = `Horario generado correctamente.\n\n`;
+
+    mensaje += `Se logró acomodar ${combinacion.length} de ${totalMaterias} materias seleccionadas.`;
+
+    if (descartadas.length > 0) {
+        mensaje += `\n\nMaterias descartadas:\n• ` + descartadas.join("\n• ");
+    }
+
+    alert(mensaje);
+
+    allowed.clear();
+
+    combinacion.forEach(curso => {
+
+    allowed.add(
+        curso.nrc
+    );
+
+    });
+    persist();
+    render();
+    renderSchedule();
+
 }
 
-$("generateSchedule")?.addEventListener(
-    "click",
-    generarHorario
-);
+$("generateSchedule")?.addEventListener("click",generarHorario);
 
 cargarMaterias();
