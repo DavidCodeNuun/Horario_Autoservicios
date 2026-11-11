@@ -104,36 +104,59 @@
                     </div>
     
                     <div class="filter-actions">
-                        <button id="clearFilters">
+                        <button id="clearFilters" class="btn-secondary">
                             Limpiar filtros
+                        </button>
+    
+                        <button id="generateSchedule" class="btn-primary">
+                            Generar horario
                         </button>
                     </div>
     
                 </section>
                 <div id="sections" class="scroll"></div>
             </article>
-
+    
         </section>
-
         <!-- HORARIO SEMANAL -->
         <section class="schedule-section">
-        
+    
             <article class="card schedule-card">
-        
-                <h2>
-                    📅 Horario Semanal
-                </h2>
-        
+    
+                <div class="schedule-header">
+    
+                    <h2>
+                        📅 Horario Semanal
+                    </h2>
+    
+                    <div id="combinationNavigator" class="combination-nav">
+    
+                        <button id="prevCombination" type="button">
+                            ‹
+                        </button>
+    
+                        <span id="combinationIndicator">
+                            Combinación 1 de 3
+                        </span>
+    
+                        <button id="nextCombination" type="button">
+                            ›
+                        </button>
+    
+                    </div>
+    
+                </div>
+    
                 <div id="schedule">
-        
+    
                     <p class="schedule-placeholder">
                         Selecciona cursos para generar el horario.
                     </p>
-        
+    
                 </div>
     
             </article>
-        
+    
         </section>
     </main>
     <script src="js/app.js"></script>
