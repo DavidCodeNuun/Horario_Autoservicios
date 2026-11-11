@@ -1,6 +1,14 @@
 let data = [];
-
 const $ = (id) => document.getElementById(id);
+
+const COLORES_CURSO = [
+    "course-blue",
+    "course-green",
+    "course-yellow",
+    "course-pink",
+    "course-purple",
+    "course-cyan"
+];
 
 let chosen = new Set();
 let allowed = new Set();
@@ -633,24 +641,9 @@ function renderSchedule() {
                             hora >= h.inicio &&
                             hora <= h.fin;
 
-                        if (
-                             h.dia.trim() === dia.trim() &&
-                            ocupaHora
-                        ) {
+                        if (h.dia.trim() === dia.trim() && ocupaHora) {
 
-                            const colores = [
-                                "course-blue",
-                                "course-green",
-                                "course-yellow",
-                                "course-pink",
-                                "course-purple",
-                                "course-cyan"
-                            ];
-
-                            const color =
-                                colores[
-                                    parseInt(section.nrc) % colores.length
-                                ];
+                            const color = COLORES_CURSO[parseInt(section.nrc) % COLORES_CURSO.length];
 
                             contenido += `
                                 <div class="schedule-course ${color}">
@@ -833,8 +826,7 @@ function generarCombinacionBacktracking() {
 
     function resolver(
         indiceMateria,
-        resultadoActual,
-        materiasIncluidas
+        resultadoActual
     ) {
 
         if (
@@ -875,30 +867,22 @@ function generarCombinacionBacktracking() {
 
             resultadoActual.push(curso);
 
-            materiasIncluidas.push(
-                materia.nombre
-            );
-
             resolver(
                 indiceMateria + 1,
-                resultadoActual,
-                materiasIncluidas
+                resultadoActual
             );
 
             resultadoActual.pop();
-            materiasIncluidas.pop();
         }
 
         resolver(
             indiceMateria + 1,
-            resultadoActual,
-            materiasIncluidas
+            resultadoActual
         );
     }
 
     resolver(
         0,
-        [],
         []
     );
 

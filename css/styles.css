@@ -138,13 +138,6 @@ p {
     color: #657083;
 }
 
-.heading small {
-    position: absolute;
-    right: 12px;
-    top: 16px;
-    color: #657083;
-}
-
 .panels {
     display: grid;
     grid-template-columns: 37% 63%;
@@ -225,19 +218,6 @@ select {
     font-size: 13px;
 }
 
-.subject small {
-    font-size: 11px;
-    color: #718091;
-}
-
-.subject em {
-    margin-left: auto;
-    font-size: 12px;
-    font-style: normal;
-    color: #718091;
-    padding-right: 20px;
-}
-
 input[type="checkbox"] {
     width: 19px;
     height: 19px;
@@ -259,11 +239,6 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     gap: 16px;
-}
-
-.group summary small {
-    display: block;
-    color: #68798b;
 }
 
 .group summary span:last-child {
