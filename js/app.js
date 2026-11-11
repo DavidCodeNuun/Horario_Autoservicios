@@ -28,26 +28,65 @@ const combinaciones = [
 
 
 try {
+
     const saved = JSON.parse(
         localStorage.getItem("buap-planner-v2")
     );
 
-    if (saved) {
-        chosen = new Set(saved.chosen || []);
-        allowed = new Set(saved.allowed || []);
+    if (saved?.combinations) {
+
+        saved.combinations.forEach(
+            (comb, index) => {
+
+                if (!combinaciones[index])
+                    return;
+
+                combinaciones[index].materias =
+                    comb.materias || [];
+
+                combinaciones[index].cursos =
+                    comb.cursos || [];
+            }
+        );
+
+        currentCombination =
+            saved.currentCombination || 1;
+
+        const actual =
+            combinaciones[
+                currentCombination - 1
+            ];
+
+        chosen =
+            new Set(actual.materias);
+
+        allowed =
+            new Set(actual.cursos);
     }
+
 } catch {
-    console.warn("No fue posible recuperar los datos guardados.");
+
+    console.warn(
+        "No fue posible recuperar los datos guardados."
+    );
+
 }
 
 function persist() {
+
+    guardarCombinacionActual();
+
     localStorage.setItem(
         "buap-planner-v2",
         JSON.stringify({
-            chosen: [...chosen],
-            allowed: [...allowed]
+            combinations: combinaciones.map(c => ({
+                materias: c.materias,
+                cursos: c.cursos
+            })),
+            currentCombination
         })
     );
+
 }
 
 async function cargarMaterias() {
@@ -728,6 +767,7 @@ $("prevCombination")?.addEventListener(
 
             actualizarIndicadorCombinacion();
 
+            persist();
         }
 
     }
@@ -747,6 +787,7 @@ $("nextCombination")?.addEventListener(
 
             actualizarIndicadorCombinacion();
 
+            persist();
         }
 
     }
