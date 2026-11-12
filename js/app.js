@@ -986,6 +986,34 @@ function generarHorario() {
 
 }
 
+async function exportarPNG() {
+
+    const horario =
+        document.getElementById("schedule");
+
+    const canvas =
+        await html2canvas(horario, {
+            scale: 2,
+            backgroundColor: "#ffffff"
+        });
+
+    const enlace =
+        document.createElement("a");
+
+    enlace.download =
+        "Horario_BUAP.png";
+
+    enlace.href =
+        canvas.toDataURL("image/png");
+
+    enlace.click();
+}
+
 $("generateSchedule")?.addEventListener("click",generarHorario);
+
+$("exportPNG")?.addEventListener(
+    "click",
+    exportarPNG
+);
 
 cargarMaterias();
