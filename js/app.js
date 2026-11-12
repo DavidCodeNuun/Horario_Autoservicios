@@ -1,5 +1,6 @@
 let data = [];
 const $ = (id) => document.getElementById(id);
+const PERIODO_ACADEMICO ="Primavera 2027";
 
 const COLORES_CURSO = [
     "course-blue",
@@ -1009,11 +1010,254 @@ async function exportarPNG() {
     enlace.click();
 }
 
+function obtenerCursosPDF() {
+
+    const dias = {
+        "Lunes": [],
+        "Martes": [],
+        "Miércoles": [],
+        "Jueves": [],
+        "Viernes": [],
+        "Sabado": []
+    };
+
+    data.forEach(materia => {
+
+        materia.sections.forEach(section => {
+
+            if (!allowed.has(section.nrc)) {
+                return;
+            }
+
+            section.horarios.forEach(horario => {
+
+                dias[horario.dia].push({
+
+                    nombre: materia.name,
+
+                    nrc: section.nrc,
+
+                    profesor: section.profesor,
+
+                    inicio: horario.inicio,
+
+                    fin: horario.fin,
+
+                    aula: horario.aula
+
+                });
+
+            });
+
+        });
+
+    });
+
+    Object.keys(dias).forEach(dia => {
+
+        dias[dia].sort(
+            (a, b) =>
+                a.inicio.localeCompare(
+                    b.inicio
+                )
+        );
+
+    });
+
+    return dias;
+}
+
+function exportarPDF() {
+
+    const dias =
+        obtenerCursosPDF();
+
+    const { jsPDF } =
+        window.jspdf;
+
+    const pdf =
+        new jsPDF(
+            "p",
+            "mm",
+            "a4"
+        );
+
+    const fecha =
+        new Date().toLocaleDateString(
+            "es-MX"
+        );
+
+    const textoCombinacion =
+        document
+            .getElementById(
+                "combinationIndicator"
+            )
+            .textContent;
+
+    const numeroCombinacion =
+        textoCombinacion.match(/\d+/)?.[0] || "1";
+
+    let y = 20;
+
+    pdf.setFont(
+        "helvetica",
+        "bold"
+    );
+
+    pdf.setFontSize(18);
+
+    pdf.text(
+        "Horario BUAP",
+        105,
+        y,
+        {
+            align: "center"
+        }
+    );
+
+    y += 12;
+
+    pdf.setFont(
+        "helvetica",
+        "normal"
+    );
+
+    pdf.setFontSize(12);
+
+    pdf.text(
+        `BUAP: Periodo ${PERIODO_ACADEMICO}`,
+        10,
+        y
+    );
+
+    pdf.text(
+        `Fecha: ${fecha}`,
+        150,
+        y
+    );
+
+    y += 5;
+
+    pdf.text(
+        `Combinación seleccionada: ${numeroCombinacion}`,
+        10,
+        y
+    );
+
+    y += 10;
+
+    Object.entries(dias).forEach(
+        ([dia, cursos]) => {
+
+            if (
+                cursos.length === 0
+            ) {
+                return;
+            }
+
+            if (y > 240) {
+                pdf.addPage();
+                y = 20;
+            }
+
+            pdf.setFont(
+                "helvetica",
+                "bold"
+            );
+
+            pdf.setFontSize(14);
+
+            pdf.text(
+                dia.toUpperCase(),
+                10,
+                y
+            );
+
+            y += 8;
+
+            cursos.forEach(curso => {
+
+                if (y > 250) {
+                    pdf.addPage();
+                    y = 20;
+                }
+
+                pdf.setFont(
+                    "helvetica",
+                    "bold"
+                );
+
+                pdf.setFontSize(11);
+
+                pdf.text(
+                    `${curso.inicio} - ${curso.fin} | ${curso.nombre}`,
+                    10,
+                    y
+                );
+
+                y += 6;
+
+                pdf.setFont(
+                    "helvetica",
+                    "normal"
+                );
+
+                pdf.text(
+                    `NRC: ${curso.nrc}`,
+                    15,
+                    y
+                );
+
+                y += 5;
+
+                pdf.text(
+                    `Profesor: ${curso.profesor}`,
+                    15,
+                    y
+                );
+
+                y += 5;
+
+                pdf.text(
+                    `Aula: ${curso.aula}`,
+                    15,
+                    y
+                );
+
+                y += 8;
+
+                pdf.line(
+                    10,
+                    y,
+                    190,
+                    y
+                );
+
+                y += 6;
+
+            });
+
+            y += 5;
+
+        }
+    );
+
+    pdf.save(
+        "Horario_BUAP.pdf"
+    );
+}
+
+
 $("generateSchedule")?.addEventListener("click",generarHorario);
 
 $("exportPNG")?.addEventListener(
     "click",
     exportarPNG
+);
+
+$("exportPDF")?.addEventListener(
+    "click",
+    exportarPDF
 );
 
 cargarMaterias();
