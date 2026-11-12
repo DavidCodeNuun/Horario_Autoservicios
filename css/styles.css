@@ -467,13 +467,14 @@ td:nth-child(6) {
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    margin-bottom: 14px;
+    margin-bottom: 5px;
 }
 
 .combination-nav {
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 18px;
 }
 
 #combinationIndicator {
@@ -530,3 +531,60 @@ td:nth-child(6) {
     }
 
 }
+
+/* =========================
+   EXPORTACION DE HORARIO
+   ========================= */
+
+.export-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.export-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 170px;
+
+    padding: 8px 14px;
+
+    border: 1px solid #c9d6e5;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.export-btn:hover {
+    background: #f3f8fd;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.export-btn:active {
+    transform: translateY(0);
+}
+
+#exportPNG {
+    color: #1976d2;
+}
+
+#exportPDF {
+    color: #d32f2f;
+}
+

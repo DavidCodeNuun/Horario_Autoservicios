@@ -120,43 +120,55 @@
         </section>
         <!-- HORARIO SEMANAL -->
         <section class="schedule-section">
-    
+        
             <article class="card schedule-card">
-    
+        
                 <div class="schedule-header">
-    
-                    <h2>
-                        📅 Horario Semanal
-                    </h2>
-    
-                    <div id="combinationNavigator" class="combination-nav">
-    
-                        <button id="prevCombination" type="button">
-                            ‹
-                        </button>
-    
-                        <span id="combinationIndicator">
-                            Combinación 1 de 3
-                        </span>
-    
-                        <button id="nextCombination" type="button">
-                            ›
-                        </button>
-    
+        
+                    <h2>📅 Horario Semanal</h2>
+        
+                    <div class="schedule-controls">
+        
+                        <div id="combinationNavigator" class="combination-nav">
+        
+                            <button id="prevCombination" type="button">
+                                ‹
+                            </button>
+        
+                            <span id="combinationIndicator">
+                                Combinación 1 de 3
+                            </span>
+        
+                            <button id="nextCombination" type="button">
+                                ›
+                            </button>
+        
+                        </div>
+        
+                        <div class="export-actions">
+        
+                            <button id="exportPNG" class="export-btn">
+                                Exportar PNG
+                            </button>
+        
+                            <button id="exportPDF" class="export-btn">
+                                Exportar PDF
+                            </button>
+        
+                        </div>
+        
                     </div>
-    
+        
                 </div>
-    
+        
                 <div id="schedule">
-    
                     <p class="schedule-placeholder">
                         Selecciona cursos para generar el horario.
                     </p>
-    
                 </div>
-    
+        
             </article>
-    
+        
         </section>
     </main>
     <script src="js/app.js"></script>
