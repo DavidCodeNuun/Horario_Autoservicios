@@ -1259,5 +1259,23 @@ $("exportPDF")?.addEventListener(
     "click",
     exportarPDF
 );
+/* =========================
+   MAPA CURRICULAR
+========================= */
 
+$("btnMapaCurricular")?.addEventListener(
+    "click",
+    () => {
+        $("modalMapaCurricular")
+            .classList.add("active");
+    }
+);
+
+$("cerrarMapaCurricular")?.addEventListener(
+    "click",
+    () => {
+        $("modalMapaCurricular")
+            .classList.remove("active");
+    }
+);
 cargarMaterias();
