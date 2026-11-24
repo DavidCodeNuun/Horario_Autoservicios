@@ -184,26 +184,127 @@
         <div class="modal-mapa-content">
     
             <div class="modal-mapa-header">
-    
-                <h2>Mapa Curricular</h2>
-    
+                 <div>
+                    <h2>Mapa Curricular</h2>
+                    <p class="career-title">
+                        Ingeniería en Ciencias de la Computación · Plan 2017
+                    </p>
+                </div>
+                
                 <button id="cerrarMapaCurricular" class="cerrar-modal">
                     ✕
                 </button>
-    
+                
             </div>
     
             <div class="modal-mapa-body">
     
-                <div class="placeholder-mapa">
+                <!-- PANEL LATERAL -->
+                <aside class="academic-sidebar">
     
-                    <h3>Mapa Curricular BUAP</h3>
+                    <div class="academic-section">
+                        <h3>Mi trayectoria</h3>
+                        <p>Selecciona las materias que cursas actualmente.</p>
+                    </div>
     
-                    <p>
-                        Aquí se mostrará el mapa curricular interactivo.
-                    </p>
+                    <div class="academic-section">
+                        <label for="semestreActual">
+                            Semestre actual
+                        </label>
     
-                </div>
+                        <select id="semestreActual">
+                            <option value="1">1° semestre</option>
+                            <option value="2">2° semestre</option>
+                            <option value="3">3° semestre</option>
+                            <option value="4">4° semestre</option>
+                            <option value="5">5° semestre</option>
+                            <option value="6">6° semestre</option>
+                            <option value="7">7° semestre</option>
+                            <option value="8">8° semestre</option>
+                            <option value="9">9° semestre</option>
+                            <option value="10">10° semestre</option>
+                        </select>
+                    </div>
+    
+                    <hr>
+    
+                    <div class="academic-section">
+    
+                        <h3>Avance académico</h3>
+    
+                        <div class="avance-porcentaje">
+                            <span id="academicoPorcentaje">
+                                0%
+                            </span>
+                        </div>
+    
+                        <div class="barra-avance">
+                            <div id="barraProgreso" class="barra-avance-fill">
+                            </div>
+                        </div>
+    
+                        <p id="academicoCreditos">
+                            0 / 292 créditos
+                        </p>
+    
+                    </div>
+                    <hr>
+                    
+                    <div id="academicWarning" class="academic-warning hidden">
+                    </div>
+    
+                </aside>
+    
+                <!-- CONTENIDO PRINCIPAL -->
+                <section class="academic-content">
+    
+                    <!-- TARJETAS -->
+                    <div class="academic-cards">
+    
+                        <div class="summary-card approved-card">
+                            <span id="cardAprobadas">
+                                0
+                            </span>
+                            <p>Aprobadas</p>
+                        </div>
+    
+                        <div class="summary-card current-card">
+                            <span id="cardEnCurso">
+                                0
+                            </span>
+                            <p>En curso</p>
+                        </div>
+    
+                        <div class="summary-card priority-card">
+                            <span id="cardPrioritarias">
+                                0
+                            </span>
+                            <p>Prioritarias</p>
+                        </div>
+    
+                    </div>
+    
+                    <!-- TITULO DEL MAPA -->
+                    <div class="curriculum-header">
+    
+                        <h2>Tu mapa curricular</h2>
+    
+                        <p>
+                            Haz clic en una materia para marcarla en curso.
+                        </p>
+    
+                    </div>
+    
+                    <!-- SEMESTRES -->
+                    <div id="curriculumGrid" class="curriculum-grid">
+    
+                        <div class="curriculum-loading">
+                            Cargando mapa curricular...
+                        </div>
+    
+                    </div>
+    
+                </section>
     
             </div>
     
@@ -214,6 +315,7 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/seguimientoAcademico.js"></script>
     
 </body>
 
