@@ -714,3 +714,294 @@ td:nth-child(6) {
 
     text-align: center;
 }
+
+/* ==================================================
+   SEGUIMIENTO ACADÉMICO
+================================================== */
+
+.modal-mapa-body {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    min-height: 650px;
+}
+
+/* ==========================
+   PANEL LATERAL
+========================== */
+
+.academic-sidebar {
+    width: 280px;
+    min-width: 280px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 20px;
+
+    border-right: 1px solid #dce3ea;
+
+    background: #fafbfd;
+}
+
+.academic-section h3 {
+    margin: 0 0 10px 0;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #1f3a5f;
+}
+
+.academic-section p,
+.academic-section label {
+    font-size: 14px;
+    color: #4f5d75;
+}
+
+#semestreActual {
+    width: 100%;
+
+    margin-top: 8px;
+    padding: 10px;
+
+    border: 1px solid #cfd8e3;
+    border-radius: 8px;
+
+    background: white;
+
+    font-size: 14px;
+}
+
+/* ==========================
+   AVANCE ACADÉMICO
+========================== */
+
+.avance-porcentaje {
+    margin-bottom: 12px;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    color: #1d4ed8;
+}
+
+.barra-avance {
+    width: 100%;
+    height: 10px;
+
+    background: #e2e8f0;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.barra-avance-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background: #2563eb;
+
+    transition: width .3s ease;
+}
+
+#academicoCreditos {
+    margin-top: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #475569;
+}
+
+/* ==========================
+   LEYENDA
+========================== */
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+.legend {
+    width: 18px;
+    height: 18px;
+
+    border-radius: 4px;
+}
+
+/* aprobada */
+.legend.approved {
+    background: #dcfce7;
+    border: 2px solid #16a34a;
+}
+
+/* en curso */
+.legend.current {
+    background: #dbeafe;
+    border: 2px solid #2563eb;
+}
+
+/* pendiente */
+.legend.pending {
+    background: white;
+    border: 1px solid #cbd5e1;
+}
+
+/* prioritaria */
+.legend.priority {
+    background: white;
+    border: 3px solid #dc2626;
+}
+
+/* ==========================
+   WARNING
+========================== */
+
+.academic-warning {
+    margin-top: auto;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+
+    color: #b91c1c;
+
+    font-size: 13px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================
+   ÁREA PRINCIPAL
+========================== */
+
+.academic-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+
+    overflow: hidden;
+}
+
+/* ==========================
+   TARJETAS
+========================== */
+
+.academic-cards {
+    display: flex;
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    min-width: 130px;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+
+.summary-card span {
+    display: block;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.summary-card p {
+    margin: 0;
+
+    font-size: 14px;
+    color: #64748b;
+}
+
+.approved-card span {
+    color: #16a34a;
+}
+
+.current-card span {
+    color: #2563eb;
+}
+
+.priority-card span {
+    color: #dc2626;
+}
+
+/* ==========================
+   CABECERA
+========================== */
+
+.curriculum-header {
+    margin-bottom: 20px;
+}
+
+.curriculum-header h2 {
+    margin: 0;
+
+    color: #1f3a5f;
+}
+
+.curriculum-header p {
+    margin-top: 5px;
+
+    color: #64748b;
+}
+
+/* ==========================
+   CONTENEDOR DEL MAPA
+========================== */
+
+.curriculum-grid {
+    flex: 1;
+
+    overflow: auto;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce3ea;
+}
+
+.curriculum-loading {
+    text-align: center;
+    color: #64748b;
+}
+
+/* ==========================
+   TITULO DE CARRERA
+========================== */
+
+.career-title {
+    margin-top: 5px;
+
+    font-size: 13px;
+
+    color: #64748b;
+}
