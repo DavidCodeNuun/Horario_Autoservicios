@@ -174,27 +174,20 @@
         
         </section>
     </main>
-    
+
     <!-- =========================
-         MODAL MAPA CURRICULAR
+         MODAL MAPA CURRICULAR - NUEVO
     ========================= -->
     
     <div id="modalMapaCurricular" class="modal-mapa">
-    
         <div class="modal-mapa-content">
     
             <div class="modal-mapa-header">
-                 <div>
+                <div>
                     <h2>Mapa Curricular</h2>
-                    <p class="career-title">
-                        Ingeniería en Ciencias de la Computación · Plan 2017
-                    </p>
+                    <p class="career-title">Ingeniería en Ciencias de la Computación · Plan 2017</p>
                 </div>
-                
-                <button id="cerrarMapaCurricular" class="cerrar-modal">
-                    ✕
-                </button>
-                
+                <button id="cerrarMapaCurricular" class="cerrar-modal">✕</button>
             </div>
     
             <div class="modal-mapa-body">
@@ -205,17 +198,15 @@
                     <div class="academic-section">
                         <h3>Mi trayectoria</h3>
                         <p>Selecciona las materias que cursas actualmente.</p>
+                        <p class="avance-nota" style="margin-top:8px;">Clic = En curso &nbsp;·&nbsp; Clic derecho = Aprobada</p>
                     </div>
     
                     <div class="academic-section">
-                        <label for="semestreActual">
-                            Semestre actual
-                        </label>
-    
+                        <label for="semestreActual">Semestre actual</label>
                         <select id="semestreActual">
                             <option value="1">1° semestre</option>
                             <option value="2">2° semestre</option>
-                            <option value="3">3° semestre</option>
+                            <option value="3" selected>3° semestre</option>
                             <option value="4">4° semestre</option>
                             <option value="5">5° semestre</option>
                             <option value="6">6° semestre</option>
@@ -229,87 +220,76 @@
                     <hr>
     
                     <div class="academic-section">
-    
                         <h3>Avance académico</h3>
-    
                         <div class="avance-porcentaje">
-                            <span id="academicoPorcentaje">
-                                0%
-                            </span>
+                            <span id="academicoPorcentaje">0%</span>
                         </div>
-    
                         <div class="barra-avance">
-                            <div id="barraProgreso" class="barra-avance-fill">
-                            </div>
+                            <div id="barraProgreso" class="barra-avance-fill"></div>
                         </div>
-    
-                        <p id="academicoCreditos">
-                            0 / 292 créditos
-                        </p>
-    
+                        <p id="academicoCreditos">0 / 292 créditos</p>
+                        <p class="avance-nota">Solo cuentan créditos aprobados. Los en curso aún no cuentan.</p>
                     </div>
+    
                     <hr>
-                    
-                    <div id="academicWarning" class="academic-warning hidden">
+    
+                    <!-- ESTADO ACTUAL - ANTES ERAN LAS TARJETAS DE ARRIBA -->
+                    <div class="academic-section">
+                        <h3>Estado actual de materias</h3>
+                        <ul class="estado-materias">
+                            <li class="estado-item estado-aprobada">
+                                <span class="estado-dot"></span>
+                                <span class="estado-label">Aprobadas</span>
+                                <strong class="estado-num" id="cardAprobadas">0</strong>
+                            </li>
+                            <li class="estado-item estado-curso">
+                                <span class="estado-dot"></span>
+                                <span class="estado-label">En curso</span>
+                                <strong class="estado-num" id="cardEnCurso">0</strong>
+                            </li>
+                            <li class="estado-item estado-pendiente">
+                                <span class="estado-dot"></span>
+                                <span class="estado-label">Pendiente</span>
+                                <strong class="estado-num" id="cardPendientes">0</strong>
+                            </li>
+                            <li class="estado-item estado-prioritaria">
+                                <span class="estado-dot"></span>
+                                <span class="estado-label">Prioritarias</span>
+                                <strong class="estado-num" id="cardPrioritarias">0</strong>
+                            </li>
+                        </ul>
+                        <p class="estado-total">Total: <strong id="cardTotal">0 materias</strong></p>
                     </div>
+    
+                    <hr>
+    
+                    <div id="academicWarning" class="academic-warning hidden"></div>
     
                 </aside>
     
-                <!-- CONTENIDO PRINCIPAL -->
+                <!-- CONTENIDO PRINCIPAL - YA SIN TARJETAS ARRIBA -->
                 <section class="academic-content">
     
-                    <!-- TARJETAS -->
-                    <div class="academic-cards">
-    
-                        <div class="summary-card approved-card">
-                            <span id="cardAprobadas">
-                                0
-                            </span>
-                            <p>Aprobadas</p>
-                        </div>
-    
-                        <div class="summary-card current-card">
-                            <span id="cardEnCurso">
-                                0
-                            </span>
-                            <p>En curso</p>
-                        </div>
-    
-                        <div class="summary-card priority-card">
-                            <span id="cardPrioritarias">
-                                0
-                            </span>
-                            <p>Prioritarias</p>
-                        </div>
-    
-                    </div>
-    
-                    <!-- TITULO DEL MAPA -->
                     <div class="curriculum-header">
-    
                         <h2>Tu mapa curricular</h2>
-    
-                        <p>
-                            Haz clic en una materia para marcarla en curso.
-                        </p>
-    
+                        <p>Haz clic en una materia para marcarla en curso. El color es su área.</p>
                     </div>
     
-                    <!-- SEMESTRES -->
+                    <!-- CABECERA DE NIVELES - COMO LA IMAGEN OFICIAL -->
+                    <div class="niveles-header">
+                        <span class="nivel-basico">NIVEL BÁSICO</span>
+                        <span class="nivel-formativo">NIVEL FORMATIVO</span>
+                    </div>
+    
+                    <!-- EL JS VA A LLENAR ESTO POR ÁREAS -->
                     <div id="curriculumGrid" class="curriculum-grid">
-    
-                        <div class="curriculum-loading">
-                            Cargando mapa curricular...
-                        </div>
-    
+                        <div class="curriculum-loading">Cargando mapa curricular...</div>
                     </div>
     
                 </section>
     
             </div>
-    
         </div>
-    
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
