@@ -1,0 +1,402 @@
+[
+{
+  "id": "MAT",
+  "nombre": "Matemáticas",
+  "semestre": 1,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": []
+},
+{
+  "id": "ALG1",
+  "nombre": "Algebra Superior",
+  "semestre": 1,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": []
+},
+{
+  "id": "MET",
+  "nombre": "Metodología de la Programación",
+  "semestre": 1,
+  "creditos": 4,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": []
+},
+{
+  "id": "LEN1",
+  "nombre": "Lengua Extranjera I",
+  "semestre": 1,
+  "creditos": 4,
+  "area": "Área de Formación General Universitaria",
+  "prerrequisitos": []
+},
+{
+  "id": "FORHS",
+  "nombre": "Formación Humana y Social",
+  "semestre": 1,
+  "creditos": 4,
+  "area": "Área de Formación General Universitaria",
+  "prerrequisitos": []
+},
+{
+  "id": "CAL1",
+  "nombre": "Cálculo Diferencial",
+  "semestre": 2,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["MAT"]
+},
+{
+  "id": "FIS1",
+  "nombre": "Física I",
+  "semestre": 2,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["MAT"]
+},
+{
+  "id": "ALGL2",
+  "nombre": "Álgebra Lineal con Elementos en Geo. An.",
+  "semestre": 2,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["ALG1"]
+},
+{
+  "id": "PRO1",
+  "nombre": "Programación I",
+  "semestre": 2,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["MET"]
+},
+{
+  "id": "LEN2",
+  "nombre": "Lengua Extranjera II",
+  "semestre": 2,
+  "creditos": 4,
+  "area": "Área de Formación General Universitaria",
+  "prerrequisitos": ["LEN1"]
+},
+{
+  "id": "DHPC",
+  "nombre": "DHPC",
+  "semestre": 2,
+  "creditos": 4,
+  "area": "Área de Formación General Universitaria",
+  "prerrequisitos": []
+},
+{
+  "id": "CAL2",
+  "nombre": "Cálculo Integral",
+  "semestre": 3,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["CAL1"]
+},
+{
+  "id": "FIS2",
+  "nombre": "Física II",
+  "semestre": 3,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["FIS1"]
+},
+{
+  "id": "MATD",
+  "nombre": "Matemáticas Discretas",
+  "semestre": 3,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["ALGL2"]
+},
+{
+  "id": "PRO2",
+  "nombre": "Programación II",
+  "semestre": 3,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["PRO1"]
+},
+{
+  "id": "ENS",
+  "nombre": "Ensamblador",
+  "semestre": 3,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["PRO1"]
+},
+{
+  "id": "LEN3",
+  "nombre": "Lengua Extranjera III",
+  "semestre": 3,
+  "creditos": 4,
+  "area": "Área de Formación General Universitaria",
+  "prerrequisitos": ["LEN2"]
+},
+{
+  "id": "ECDIF",
+  "nombre": "Ecuaciones Diferenciales",
+  "semestre": 4,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["CAL2"]
+},
+{
+  "id": "CIREL",
+  "nombre": "Circuitos Eléctricos",
+  "semestre": 4,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["FIS2"]
+},
+{
+  "id": "GRAF",
+  "nombre": "Graficación",
+  "semestre": 4,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["ALGL2","PRO2"]
+},
+{
+  "id": "ESTDAT",
+  "nombre": "Estructuras de Datos",
+  "semestre": 4,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["PRO2"]
+},
+{
+  "id": "LEN4",
+  "nombre": "Lengua Extranjera IV",
+  "semestre": 4,
+  "creditos": 4,
+  "area": "Área de Formación General Universitaria",
+  "prerrequisitos": ["LEN3"]
+},
+{
+  "id": "PROBEST",
+  "nombre": "Probab. y Estadística",
+  "semestre": 5,
+  "creditos": 6,
+  "area": "Área de Ciencias Basicas",
+  "prerrequisitos": ["CAL2"]
+},
+{
+  "id": "CIRELEC",
+  "nombre": "Circuitos Electrónicos",
+  "semestre": 5,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["CIREL"]
+},
+{
+  "id": "SO1",
+  "nombre": "Sistemas Operativos I",
+  "semestre": 5,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["ESTDAT", "ENS"]
+},
+{
+  "id": "ADA",
+  "nombre": "Análisis y Diseño de Algoritmos",
+  "semestre": 5,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["ESTDAT"]
+},
+{
+  "id": "INGSW",
+  "nombre": "Ingeniería de Software",
+  "semestre": 5,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["PRO2"]
+},
+{
+  "id": "MODRED",
+  "nombre": "Modelos de Redes",
+  "semestre": 6,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["PROBEST"]
+},
+{
+  "id": "DISDIG",
+  "nombre": "Diseño Digital",
+  "semestre": 6,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["CIRELEC"]
+},
+{
+  "id": "BDI",
+  "nombre": "Bases de Datos para Ingeniería",
+  "semestre": 6,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["ESTDAT"]
+},
+{
+  "id": "SO2",
+  "nombre": "Sistemas Operativos II",
+  "semestre": 6,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["SO1"]
+},
+{
+  "id": "ADPROY",
+  "nombre": "Administración de Proyectos",
+  "semestre": 6,
+  "creditos": 5,
+  "area": "Área de Integración Disciplinaria",
+  "prerrequisitos": []
+},
+{
+  "id": "REDINA",
+  "nombre": "Redes Inalámbricas",
+  "semestre": 7,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["MODRED"]
+},
+{
+  "id": "MINDAT",
+  "nombre": "Minería de Datos",
+  "semestre": 7,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["PROBEST"]
+},
+{
+  "id": "ARQCOMP",
+  "nombre": "Arquitectura de Comp.",
+  "semestre": 7,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["DISDIG"]
+},
+{
+  "id": "PROCON",
+  "nombre": "Programación Concurrente y Paralela",
+  "semestre": 7,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["ADA"]
+},
+{
+  "id": "DAW",
+  "nombre": "Desarrollo de Aplicaciones Web",
+  "semestre": 7,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["ADPROY"]
+},
+{
+  "id": "TEOCON",
+  "nombre": "Teoría de Control",
+  "semestre": 8,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["ECDIF"]
+},
+{
+  "id": "ADMRED",
+  "nombre": "Administración de Redes",
+  "semestre": 8,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["REDINA"]
+},
+{
+  "id": "TIA",
+  "nombre": "Técnicas de Inteligencia Artificial",
+  "semestre": 8,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["ADA"]
+},
+{
+  "id": "PRODIS",
+  "nombre": "Programación Distribuida Aplicada",
+  "semestre": 8,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["PROCON"]
+},
+{
+  "id": "DAM",
+  "nombre": "Desarrollo de Aplicaciones Móviles",
+  "semestre": 8,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["DAW"]
+},
+{
+  "id": "OPT1",
+  "nombre": "Optativa I",
+  "semestre": 8,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": []
+},
+{
+  "id": "SEGRED",
+  "nombre": "Intercomun. y Seguridad en Redes",
+  "semestre": 9,
+  "creditos": 6,
+  "area": "Área de Tecnología",
+  "prerrequisitos": ["ADMRED"]
+},
+{
+  "id": "SISEMP",
+  "nombre": "Sistemas Empotrados",
+  "semestre": 9,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": ["ARQCOMP"]
+},
+{
+  "id": "SERVSOC",
+  "nombre": "Servicio Social",
+  "semestre": 9,
+  "creditos": 10,
+  "area": "Área de Integración Profesional",
+  "prerrequisitos": []
+},
+{
+  "id": "OPT2",
+  "nombre": "Optativa II",
+  "semestre": 9,
+  "creditos": 6,
+  "area": "Área de Ingeniería en Computación",
+  "prerrequisitos": []
+},
+{
+  "id": "OPTDES",
+  "nombre": "Optativa DESI (Complementaria)",
+  "semestre": 10,
+  "creditos": 5,
+  "area": "Área de Integración Disciplinaria",
+  "prerrequisitos": []
+},
+{
+  "id": "PRACPRO",
+  "nombre": "Práctica Profesional",
+  "semestre": 10,
+  "creditos": 5,
+  "area": "Área de Integración Profesional",
+  "prerrequisitos": []
+},
+{
+  "id": "PROYI",
+  "nombre": "Proyecto I+D I",
+  "semestre": 10,
+  "creditos": 5,
+  "area": "Área de Integración Disciplinaria",
+  "prerrequisitos": ["OPT2"]
+}
+]
