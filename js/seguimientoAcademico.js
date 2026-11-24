@@ -23,6 +23,35 @@ async function cargarCurriculum() {
     }
 }
 
+function alternarMateria(idMateria) {
+
+    const indice =
+        estadoAcademico.materiasEnCurso.indexOf(idMateria);
+
+    if (indice === -1) {
+
+        estadoAcademico.materiasEnCurso.push(idMateria);
+
+    } else {
+
+        estadoAcademico.materiasEnCurso.splice(indice, 1);
+
+    }
+
+    actualizarContadores();
+
+    renderizarMapaCurricular();
+}
+
+function actualizarContadores() {
+
+    const totalEnCurso =
+        estadoAcademico.materiasEnCurso.length;
+
+    document.getElementById("cardEnCurso")
+        .textContent = totalEnCurso;
+}
+
 function renderizarMapaCurricular() {
 
     const grid = document.getElementById("curriculumGrid");
@@ -45,14 +74,25 @@ function renderizarMapaCurricular() {
 
         materiasSemestre.forEach(materia => {
 
-            html += `
-                <div
-                    class="subject-card"
-                    data-id="${materia.id}">
-                    
-                    ${materia.nombre}
+            const enCurso =
+                estadoAcademico.materiasEnCurso.includes(
+                    materia.id
+                );
 
-                </div>
+            const claseEstado =
+                enCurso
+                    ? "subject-current"
+                    : "";
+
+            html += `
+            <div
+                class="subject-card ${claseEstado}"
+                onclick="alternarMateria('${materia.id}')"
+                data-id="${materia.id}">
+
+                ${materia.nombre}
+
+            </div>
             `;
         });
 
@@ -75,3 +115,5 @@ async function inicializarSeguimientoAcademico() {
 document.addEventListener("DOMContentLoaded", () => {
     inicializarSeguimientoAcademico();
 });
+
+window.alternarMateria = alternarMateria;
